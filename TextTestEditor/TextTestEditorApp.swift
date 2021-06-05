@@ -9,9 +9,30 @@ import SwiftUI
 
 @main
 struct TextTestEditorApp: App {
+    @ObservedObject private var dataHelper = TextDataHelper()
+    @ObservedObject private var personHelper = PersonDataHelper()
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+//        WindowGroup {
+//            ListOfTextView(texts: $dataHelper.texts) {
+//                dataHelper.save()
+//            }
+//            .onAppear {
+//                dataHelper.load()
+//                personHelper.load()
+//            }
+//        }
+        WindowGroup{
+            if KeychainHelper.shared.readPerson() != nil {
+                ListOfTextView(texts: $dataHelper.texts) {
+                                dataHelper.save()
+                            }
+                            .onAppear {
+                                dataHelper.load()
+                            }
+            } else {
+                HelloView()
+            }
+            
         }
     }
 }
