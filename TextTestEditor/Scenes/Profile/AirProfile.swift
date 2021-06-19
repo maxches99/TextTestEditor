@@ -60,6 +60,7 @@ struct AirProfile: View {
             
             
         }
+        .padding(.horizontal, 8)
             
         }
     }

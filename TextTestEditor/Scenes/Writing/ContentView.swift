@@ -56,6 +56,15 @@ struct ContentView: View {
         
         
     }
+    
+    func getAttrString() -> NSAttributedString {
+        var attrStr = NSAttributedString(string: textData.title ?? "Unknown text", attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
+        var attrStr2 = NSAttributedString(string: textData.text ?? "Unknown text", attributes: [.font: UIFont.systemFont(ofSize: 14)])
+        
+        
+        
+        return attrStr2
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
